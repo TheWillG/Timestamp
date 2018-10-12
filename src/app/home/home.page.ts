@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   constructor(private router: Router) {}
+
   add() {
     this.router.navigate(['add']);
   }
