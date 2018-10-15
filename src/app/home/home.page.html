@@ -1,12 +1,21 @@
-<ion-content padding>
-  <img src="../../../resources/logo.png" alt="">
-  <br>
-  <div text-center>
-    <img src="../../../resources/person.png" alt="">
-    <br><br><br>
-    <p>YOU DON'T HAVE ANY TIMESTAMPS</p>
-    <b>Add your first by clicking the plus icon</b>
-    <br><br>
-    <ion-icon (click)="add()" name="add-circle"></ion-icon>
-  </div>
+<ion-content>
+  <ion-grid class="container" [ngClass]="theme">
+    <ion-row align-items-center>
+      <ion-col col-10>
+        <img class="logo" src="../../assets/Logo/logo-{{ theme }}.png" alt="">
+      </ion-col>
+      <ion-col col-2>
+        <img class="theme-changer" src="../../assets/Screen Mode/{{ theme }}.png" alt="" (click)="changeTheme()">
+      </ion-col>
+    </ion-row>
+    <br>
+    <div text-center>
+      <img src="../../assets/Empty State/person.png" alt="">
+      <br><br><br><br><br>
+      <p class="no-timestamps">YOU DON'T HAVE ANY TIMESTAMPS</p>
+      <b>Add your first by clicking the plus icon</b>
+      <br><br>
+      <ion-icon (click)="add()" name="add-circle"></ion-icon>
+    </div>
+  </ion-grid>
 </ion-content>
