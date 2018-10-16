@@ -1,5 +1,5 @@
 <ion-content>
-  <ion-grid class="container" [ngClass]="theme">
+  <ion-grid class="container" [ngClass]="theme" *ngIf="theme">
     <ion-row align-items-center>
       <ion-col col-10>
         <img class="logo" src="../../assets/Logo/logo-{{ theme }}.png" alt="">

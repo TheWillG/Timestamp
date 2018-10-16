@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddComponent } from './add/add.component';
+import { AddComponent } from './components/add/add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'home', loadChildren: './components/home/home.module#HomePageModule' },
   { path: 'add', component: AddComponent },
 ];
 
