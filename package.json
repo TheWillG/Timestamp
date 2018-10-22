@@ -27,9 +27,11 @@
     "@ionic/angular": "4.0.0-beta.12",
     "@ionic/pro": "2.0.3",
     "@ionic/storage": "^2.2.0",
+    "@types/shortid": "0.0.29",
     "cordova-sqlite-storage": "2.5.0",
     "core-js": "^2.5.3",
     "rxjs": "6.2.2",
+    "shortid": "^2.2.13",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

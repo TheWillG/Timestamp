@@ -10,10 +10,27 @@
     </ion-row>
     <br>
     <div text-center>
-      <img src="../../assets/Empty State/person.png" alt="">
-      <br><br><br><br><br>
-      <p class="no-timestamps">YOU DON'T HAVE ANY TIMESTAMPS</p>
-      <b>Add your first by clicking the plus icon</b>
+      <div class="empty" *ngIf="!countdowns?.length">
+        <img src="../../assets/Empty State/person.png" alt="">
+        <br><br><br><br><br>
+        <p class="no-timestamps">YOU DON'T HAVE ANY TIMESTAMPS</p>
+        <b>Add your first by clicking the plus icon</b>
+      </div>
+      <div *ngFor="let countdown of countdowns" class="countdown-item">
+        <ion-row justify-content-center (click)="viewCountdown(countdown)">
+          <ion-col class="countdown-days">
+            <b>{{ countdown?.daysRemaining }}</b>
+            <div class="days-color">Days</div>
+          </ion-col>
+          <ion-col class="countdown-description" padding-vertical>
+              {{ countdown?.description | slice:0:15  }}
+          </ion-col>
+          <ion-col class="countdown-description" padding-vertical>
+              <img src="../../../assets//Forward Arrow/ic-next.png" alt="" style="float: right; margin-right: 8px;">
+          </ion-col>
+        </ion-row>
+      </div>
+      <div></div>
       <br><br>
       <ion-icon (click)="add()" name="add-circle"></ion-icon>
     </div>

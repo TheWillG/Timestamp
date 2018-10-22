@@ -1,0 +1,50 @@
+.container {
+  padding: 20px;
+  height: 100%;
+  .btn-action {
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+  .btn-history {
+    padding: 0.5rem;
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
+  .label {
+    color: #758196;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  .countdown-param {
+    color: #F03D3D;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  .countdown-description {
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+  }
+  .share {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 25px;
+    background-color: #F03D3D;
+    color: white;
+    border-radius: 40px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+}
+.light {
+  background: white;
+  color: #091F44;
+}
+.dark {
+  background: #091E44;
+  color: white;
+}
