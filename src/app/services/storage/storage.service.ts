@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Countdown } from '../../models/countdown.model';
+import { Countdown, Reset } from '../../models/countdown.model';
 import * as shortid from 'shortid';
 
 @Injectable({
@@ -53,7 +53,15 @@ export class StorageService {
   }
 
   async getCountdowns(): Promise<Countdown[]> {
-    return JSON.parse(await this.storage.get('countdowns'));
+    const countdowns: Countdown[] = JSON.parse(await this.storage.get('countdowns'));
+    countdowns.forEach(c => {
+      c.dateTime = new Date(c.dateTime);
+      c.resets.forEach(r => {
+        r.startDate = r.startDate ? new Date(r.startDate) : null;
+        r.endDate = r.endDate ? new Date(r.endDate) : null;
+      });
+    });
+    return countdowns;
   }
 
   async getCountdown(id: string): Promise<Countdown> {
@@ -61,10 +69,26 @@ export class StorageService {
     return countdowns.find(c => c.id === id);
   }
 
+  async saveCountdown(countdown: Countdown): Promise<any> {
+    const countdowns: Countdown[] = await this.getCountdowns();
+    const updatedCountdowns = countdowns.map(c => c.id === countdown.id ? countdown : c);
+    this.setCountdowns(updatedCountdowns);
+    return;
+  }
+
   async deleteCountdown(id: string): Promise<any> {
     const countdowns: Countdown[] = await this.getCountdowns();
     const newCountdowns = countdowns.filter(c => c.id !== id);
     this.setCountdowns(newCountdowns);
+    return;
+  }
+
+  async resetCountdown(id: string, reset: Reset): Promise<any> {
+    const countdowns: Countdown[] = await this.getCountdowns();
+    const countdown = countdowns.find(c => c.id === id);
+    countdown.dateTime = new Date();
+    countdown.resets.push(reset);
+    this.setCountdowns(countdowns);
     return;
   }
 }

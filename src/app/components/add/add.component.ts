@@ -9,10 +9,10 @@ import { Countdown } from '../../models/countdown.model';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-  private theme: string;
-  private date: any = null;
-  private description = '';
-  private countdown: Countdown;
+  theme: string;
+  date: any = null;
+  description = '';
+  countdown: Countdown;
 
   constructor(private router: Router, private storageService: StorageService) {
    }
@@ -31,7 +31,7 @@ export class AddComponent implements OnInit {
     date.setFullYear(this.date.year.value);
     date.setMonth(this.date.month.value - 1);
     date.setDate(this.date.day.value);
-    this.countdown = { datetime: date, description: this.description};
+    this.countdown = new Countdown({ dateTime: date, description: this.description });
     this.storageService.addCountdown(this.countdown);
     this.router.navigate(['']);
   }

@@ -1,0 +1,13 @@
+<ion-content>
+  <ion-grid class="container" [ngClass]="theme" *ngIf="theme">
+      <img (click)="back()" src="../../../assets/BackArrow/ic-back-{{theme}}.png">
+      <div style="float: right;">
+        <span class="btn-action" (click)="reset()">complete reset</span>
+      </div>
+      <br><br><br>
+      <span class="label">WHY ARE YOU RESETTING?</span>
+      <ion-item>
+        <ion-input placeholder="Insert reason here" [(ngModel)]="reason" maxlength="32"></ion-input>
+      </ion-item>
+  </ion-grid>
+</ion-content>

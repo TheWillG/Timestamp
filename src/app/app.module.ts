@@ -12,9 +12,12 @@ import { AppRoutingModule } from './app.router';
 import { AddComponent } from './components/add/add.component';
 import { IonicStorageModule } from '@ionic/storage';
 import { CountdownComponent } from './components/countdown/countdown.component';
+import { EditComponent } from './components/edit/edit.component';
+import { ResetConfirmComponent } from './components/reset-confirm/reset-confirm.component';
+import { HistoryComponent } from './components/history/history.component';
 
 @NgModule({
-  declarations: [AppComponent, AddComponent, CountdownComponent],
+  declarations: [AppComponent, AddComponent, CountdownComponent, EditComponent, ResetConfirmComponent, HistoryComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

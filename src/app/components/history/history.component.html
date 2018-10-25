@@ -1,0 +1,19 @@
+<ion-content>
+  <ion-grid class="container" [ngClass]="theme" *ngIf="theme">
+    <img (click)="back()" src="../../../assets/BackArrow/ic-back-{{theme}}.png">
+    <br><br>
+    <div class="label">{{ countdown?.description }} HISTORY</div>
+    <br>
+    <div *ngFor="let reset of countdown?.resets">
+      <div class="date-range">{{ reset.startDate | date:'mediumDate' }} - {{ reset.endDate | date:'mediumDate' }}</div>
+      <div class="reset">
+        <div class="time-before-resetting">{{ getDaysHoursMinutes(reset) }}</div>
+        <div class="reason">{{ reset.reason }}</div>
+      </div>
+    </div>
+    <div class="footer">
+      <p class="label">created with</p>
+      <img class="logo" src="../../../assets/Logo/logo-{{ theme }}.png" alt="">
+    </div>
+  </ion-grid>
+</ion-content>

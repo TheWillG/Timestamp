@@ -7,12 +7,17 @@ import { CountdownService } from '../../services/countdown/countdown.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
   theme: string;
   countdowns: Countdown[];
-  constructor(private router: Router, private storageService: StorageService, private countdownService: CountdownService) { }
+
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    private countdownService: CountdownService
+  ) {}
 
   async ngOnInit() {
     const theme = await this.storageService.getTheme();
@@ -23,11 +28,13 @@ export class HomePage implements OnInit {
       this.storageService.setTheme(this.theme);
     }
     this.countdowns = await this.storageService.getCountdowns();
-    this.storageService.themeData.subscribe(value => this.theme = value);
+    this.storageService.themeData.subscribe(value => (this.theme = value));
     this.storageService.countdownData.subscribe(value => {
       this.countdowns = value;
       this.countdowns.forEach(countdown => {
-        countdown.daysRemaining = this.countdownService.getDaysSince(countdown.datetime);
+        countdown.daysRemaining = this.countdownService.getDaysSince(
+          countdown.dateTime
+        );
       });
     });
   }

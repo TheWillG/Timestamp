@@ -1,0 +1,21 @@
+.container {
+  padding: 20px;
+  height: 100%;
+  .btn-action {
+    padding: 0.5rem;
+    font-weight: bold;
+  }
+  .label {
+    color: #758196;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+}
+.light {
+  background: white;
+  color: #091F44;
+}
+.dark {
+  background: #091E44;
+  color: white;
+}
