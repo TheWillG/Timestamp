@@ -29,13 +29,21 @@ export class CountdownComponent implements OnInit {
     this.storageService.themeData.subscribe(value => this.theme = value);
     this.countdownId = this.route.snapshot.params.id;
     this.countdown = await this.storageService.getCountdown(this.countdownId);
+    this.updateDaysHoursMinutes();
+    this.storageService.countdownData.subscribe(countdowns => {
+      this.countdown = countdowns.find(c => c.id === this.countdownId);
+      this.updateDaysHoursMinutes();
+    });
+  }
+
+  updateDaysHoursMinutes() {
+    if (!this.countdown) {
+      return;
+    }
     const { days, hours, minutes } = this.countdownService.getDaysHoursMinutesSince(this.countdown.dateTime);
     this.days = days;
     this.hours = hours;
     this.minutes = minutes;
-    this.storageService.countdownData.subscribe(countdowns => {
-      this.countdown = countdowns.find(c => c.id === this.countdownId);
-    });
   }
 
   back() {
@@ -47,8 +55,7 @@ export class CountdownComponent implements OnInit {
   }
 
   async delete() {
-    await this.storageService.deleteCountdown(this.countdownId);
-    this.router.navigate(['home']);
+    this.router.navigate(['delete', this.countdownId]);
   }
 
   reset() {

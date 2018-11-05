@@ -1,0 +1,35 @@
+.container {
+  padding: 20px;
+  .btn-keep {
+    padding: 0.5rem;
+    font-weight: bold;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+  }
+  .label {
+    color: #758196;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  .delete {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 25px;
+    background-color: #F03D3D;
+    color: white;
+    border-radius: 40px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+}
+.light {
+  background: white;
+  color: #091F44;
+}
+.dark {
+  background: #091E44;
+  color: white;
+}

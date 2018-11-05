@@ -25,7 +25,6 @@ export class HistoryComponent implements OnInit {
     this.storageService.themeData.subscribe(value => this.theme = value);
     this.countdownId = this.route.snapshot.params.id;
     this.countdown = await this.storageService.getCountdown(this.countdownId);
-    console.log('this.countdown', this.countdown);
     this.storageService.countdownData.subscribe(countdowns => {
       this.countdown = countdowns.find(c => c.id === this.countdownId);
     });

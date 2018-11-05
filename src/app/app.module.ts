@@ -15,9 +15,10 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ResetConfirmComponent } from './components/reset-confirm/reset-confirm.component';
 import { HistoryComponent } from './components/history/history.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 @NgModule({
-  declarations: [AppComponent, AddComponent, CountdownComponent, EditComponent, ResetConfirmComponent, HistoryComponent],
+  declarations: [AppComponent, AddComponent, CountdownComponent, EditComponent, ResetConfirmComponent, HistoryComponent, DeleteConfirmComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

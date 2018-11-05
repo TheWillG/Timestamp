@@ -5,6 +5,7 @@ import { CountdownComponent } from './components/countdown/countdown.component';
 import { EditComponent } from './components/edit/edit.component';
 import { ResetConfirmComponent } from './components/reset-confirm/reset-confirm.component';
 import { HistoryComponent } from './components/history/history.component';
+import { DeleteConfirmComponent } from './components/delete-confirm/delete-confirm.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditComponent },
   { path: 'reset/:id', component: ResetConfirmComponent },
   { path: 'history/:id', component: HistoryComponent },
+  { path: 'delete/:id', component: DeleteConfirmComponent },
 ];
 
 @NgModule({
