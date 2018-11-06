@@ -4,12 +4,17 @@
     <br><br>
     <div class="label">{{ countdown?.description }} HISTORY</div>
     <br>
-    <div *ngFor="let reset of countdown?.resets">
-      <div class="date-range">{{ reset.startDate | date:'mediumDate' }} - {{ reset.endDate | date:'mediumDate' }}</div>
-      <div class="reset">
-        <div class="time-before-resetting">{{ getDaysHoursMinutes(reset) }}</div>
-        <div class="reason">{{ reset.reason }}</div>
+    <div *ngIf="countdown?.resets.length > 0">
+      <div *ngFor="let reset of countdown?.resets">
+        <div class="date-range">{{ reset.startDate | date:'mediumDate' }} - {{ reset.endDate | date:'mediumDate' }}</div>
+        <div class="reset">
+          <div class="time-before-resetting">{{ getDaysHoursMinutes(reset) }}</div>
+          <div class="reason">{{ reset.reason }}</div>
+        </div>
       </div>
+    </div>
+    <div *ngIf="countdown?.resets.length === 0">
+      <small>No history for this event yet.</small>
     </div>
   </ion-grid>
 </ion-content>

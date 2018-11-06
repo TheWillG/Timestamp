@@ -54,6 +54,9 @@ export class StorageService {
 
   async getCountdowns(): Promise<Countdown[]> {
     const countdowns: Countdown[] = JSON.parse(await this.storage.get('countdowns'));
+    if (countdowns.length === 0) {
+      return [];
+    }
     countdowns.forEach(c => {
       c.dateTime = new Date(c.dateTime);
       c.resets.forEach(r => {
