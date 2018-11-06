@@ -29,15 +29,18 @@ export class StorageService {
       const storedCountdowns = await this.getCountdowns();
       this.countdownSource.next(storedCountdowns);
     }
+    this.setTheme(await this.getTheme());
   }
 
-  setTheme(theme: string) {
-    this.storage.set('theme', theme);
+  async setTheme(theme: string) {
+    await this.storage.set('theme', theme);
     this.themeSource.next(theme);
   }
 
   async getTheme(): Promise<string> {
-    return this.storage.get('theme');
+    const theme = await this.storage.get('theme');
+    this.themeSource.next(theme);
+    return theme;
   }
 
   async addCountdown(countdown: Countdown) {

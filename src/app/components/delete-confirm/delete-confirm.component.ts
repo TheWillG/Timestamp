@@ -9,6 +9,7 @@ import { StorageService } from '../../services/storage/storage.service';
 })
 export class DeleteConfirmComponent implements OnInit {
 
+  theme: string;
   countdownId: string;
 
   constructor(
@@ -16,7 +17,9 @@ export class DeleteConfirmComponent implements OnInit {
     private router: Router,
     private storageService: StorageService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.theme = await this.storageService.getTheme();
+    this.storageService.themeData.subscribe(value => (this.theme = value));
     this.countdownId = this.route.snapshot.params.id;
   }
 

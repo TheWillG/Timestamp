@@ -50,6 +50,5 @@ export class HomePage implements OnInit {
   async changeTheme() {
     this.theme = this.theme === 'light' ? 'dark' : 'light';
     this.storageService.setTheme(this.theme);
-    console.log('this.countdowns', this.countdowns);
   }
 }
