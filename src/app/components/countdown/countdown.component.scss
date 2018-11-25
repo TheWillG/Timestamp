@@ -1,5 +1,5 @@
 .container {
-  padding: 20px;
+  padding: 30px;
   height: 100%;
   .btn-action {
     padding: 0.5rem;
@@ -26,18 +26,6 @@
     font-size: 2rem;
     color: black;
     font-weight: bold;
-  }
-  .share {
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 25px;
-    background-color: #F03D3D;
-    color: white;
-    border-radius: 40px;
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    cursor: pointer;
   }
 }
 .light {

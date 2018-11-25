@@ -18,7 +18,7 @@
       </div>
       <div *ngFor="let countdown of countdowns" class="countdown-item">
         <ion-row justify-content-center (click)="viewCountdown(countdown)">
-          <ion-col class="countdown-days">
+          <ion-col class="countdown-days" padding-vertical>
             <b>{{ countdown?.daysRemaining }}</b>
             <div class="days-color">Days</div>
           </ion-col>

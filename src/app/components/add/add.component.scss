@@ -1,5 +1,5 @@
 .container {
-  padding: 20px;
+  padding: 30px;
   height: 100%;
 }
 .light {
@@ -14,9 +14,10 @@
     color: #758196;
   }
 }
+img {
+  margin-top: 5px;
+}
 #char-counter {
+  margin-top: 10px;
   font-weight: bold;
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
 }

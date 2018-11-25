@@ -44,10 +44,15 @@ export class StorageService {
   }
 
   async addCountdown(countdown: Countdown) {
-    const countdowns = await this.getCountdowns();
-    countdown.id = shortid.generate();
-    countdowns.push(countdown);
-    this.setCountdowns(countdowns);
+    try {
+      const countdowns = await this.getCountdowns();
+      countdown.id = shortid.generate();
+      countdowns.push(countdown);
+      this.setCountdowns(countdowns);
+    } catch (e) {
+      // TODO: Handle error
+      return;
+    }
   }
 
   setCountdowns(countdowns: Countdown[]) {
@@ -56,23 +61,33 @@ export class StorageService {
   }
 
   async getCountdowns(): Promise<Countdown[]> {
-    const countdowns: Countdown[] = JSON.parse(await this.storage.get('countdowns'));
-    if (countdowns.length === 0) {
+    try {
+      const countdowns: Countdown[] = JSON.parse(await this.storage.get('countdowns'));
+      if (!countdowns || countdowns.length === 0) {
+        return [];
+      }
+      countdowns.forEach(c => {
+        c.dateTime = new Date(c.dateTime);
+        c.resets.forEach(r => {
+          r.startDate = r.startDate ? new Date(r.startDate) : null;
+          r.endDate = r.endDate ? new Date(r.endDate) : null;
+        });
+      });
+      return countdowns;
+    } catch (e) {
+      // TODO: Handle error
       return [];
     }
-    countdowns.forEach(c => {
-      c.dateTime = new Date(c.dateTime);
-      c.resets.forEach(r => {
-        r.startDate = r.startDate ? new Date(r.startDate) : null;
-        r.endDate = r.endDate ? new Date(r.endDate) : null;
-      });
-    });
-    return countdowns;
   }
 
   async getCountdown(id: string): Promise<Countdown> {
-    const countdowns: Countdown[] = await this.getCountdowns();
-    return countdowns.find(c => c.id === id);
+    try {
+      const countdowns: Countdown[] = await this.getCountdowns();
+      return countdowns.find(c => c.id === id);
+    } catch (e) {
+      // TODO: Handle error
+      return null;
+    }
   }
 
   async saveCountdown(countdown: Countdown): Promise<any> {
