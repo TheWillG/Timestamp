@@ -3,6 +3,7 @@ export class Countdown {
   daysRemaining: number;
   dateTime: Date;
   description: string;
+  past?: boolean;
   resets: Reset[];
   constructor(obj) {
     this.id = obj.id || '';

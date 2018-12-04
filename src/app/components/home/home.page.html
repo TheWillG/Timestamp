@@ -1,38 +1,56 @@
 <ion-content>
-  <ion-grid class="container" [ngClass]="theme" *ngIf="theme">
+  <ion-grid class="container"
+    [ngClass]="theme"
+    *ngIf="theme">
     <ion-row align-items-center>
       <ion-col col-10>
-        <img class="logo" src="../../assets/Logo/logo-{{ theme }}.png" alt="">
+        <img class="logo"
+          src="../../assets/Logo/logo-{{ theme }}.png"
+          alt="">
       </ion-col>
       <ion-col col-2>
-        <img class="theme-changer" src="../../assets/Screen Mode/{{ theme }}.png" alt="" (click)="changeTheme()">
+        <img class="theme-changer"
+          src="../../assets/Screen Mode/{{ theme }}.png"
+          alt=""
+          (click)="changeTheme()">
       </ion-col>
     </ion-row>
     <br>
     <div text-center>
-      <div class="empty" *ngIf="!countdowns?.length">
-        <img src="../../assets/Empty State/person.png" alt="">
+      <div class="empty"
+        *ngIf="!countdowns?.length">
+        <img src="../../assets/Empty State/person.png"
+          alt="">
         <br><br><br><br><br>
         <p class="no-timestamps">YOU DON'T HAVE ANY TIMESTAMPS</p>
         <b>Add your first by clicking the plus icon</b>
       </div>
-      <div *ngFor="let countdown of countdowns" class="countdown-item">
-        <ion-row justify-content-center (click)="viewCountdown(countdown)">
-          <ion-col class="countdown-days" padding-vertical>
+      <div *ngFor="let countdown of countdowns"
+        class="countdown-item">
+        <ion-row justify-content-center
+          (click)="viewCountdown(countdown)">
+          <ion-col class="countdown-days"
+            padding-vertical>
             <b>{{ countdown?.daysRemaining }}</b>
-            <div class="days-color">Days</div>
+            <div class="days-color">Days {{ countdown?.past ? 'Since' : 'Until' }}</div>
           </ion-col>
-          <ion-col class="countdown-description" padding-vertical col-8>
-              {{ countdown?.description | slice:0:15  }}
+          <ion-col class="countdown-description"
+            padding-vertical
+            col-8>
+            {{ countdown?.description | slice:0:15 }}
           </ion-col>
-          <ion-col class="countdown-description" padding-vertical col-1>
-              <img src="../../../assets//Forward Arrow/ic-next.png" alt="" style="float: right; margin-right: 8px;">
+          <ion-col class="countdown-description"
+            padding-vertical
+            col-1>
+            <img src="../../../assets//Forward Arrow/ic-next.png"
+              alt=""
+              style="float: right; margin-right: 8px;">
           </ion-col>
         </ion-row>
       </div>
-      <div></div>
-      <br><br>
-      <ion-icon (click)="add()" name="add-circle"></ion-icon>
+      <br><br><br><br>
+      <ion-icon (click)="add()"
+        name="add-circle"></ion-icon>
     </div>
   </ion-grid>
 </ion-content>

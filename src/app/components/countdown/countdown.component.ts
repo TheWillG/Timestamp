@@ -16,6 +16,7 @@ export class CountdownComponent implements OnInit {
   days: number;
   hours: number;
   minutes: number;
+  past: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,10 +41,11 @@ export class CountdownComponent implements OnInit {
     if (!this.countdown) {
       return;
     }
-    const { days, hours, minutes } = this.countdownService.getDaysHoursMinutesSince(this.countdown.dateTime);
+    const { days, hours, minutes, past } = this.countdownService.getDaysHoursMinutesSince(this.countdown.dateTime);
     this.days = days;
     this.hours = hours;
     this.minutes = minutes;
+    this.past = past;
   }
 
   back() {

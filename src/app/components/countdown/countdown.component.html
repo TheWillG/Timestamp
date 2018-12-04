@@ -3,11 +3,11 @@
       <img (click)="back()" src="../../../assets/BackArrow/ic-back-{{theme}}.png">
       <div style="float: right;">
         <span class="btn-action" (click)="edit()">edit</span>
-        <span class="btn-action" (click)="reset()">reset</span>
+        <span *ngIf="past" class="btn-action" (click)="reset()">reset</span>
         <span class="btn-action" (click)="delete()">delete</span>
       </div>
       <br><br><br>
-      <span class="label">IT HAS BEEN</span>
+      <span class="label">{{ past ? 'IT HAS BEEN' : 'THERE ARE' }}</span>
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -25,7 +25,7 @@
         </ion-row>
       </ion-grid>
       <br><br><br>
-      <div class="label">SINCE</div>
+      <div class="label">{{ past ? 'SINCE' : 'UNTIL' }}</div>
       <div class="countdown-description">{{ countdown?.description }}</div>
       <br>
       <span class="btn-history" (click)="history()">history</span>

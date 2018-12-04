@@ -32,9 +32,9 @@ export class HomePage implements OnInit {
     this.storageService.countdownData.subscribe(value => {
       this.countdowns = value;
       this.countdowns.forEach(countdown => {
-        countdown.daysRemaining = this.countdownService.getDaysSince(
-          countdown.dateTime
-        );
+        const { days, past } = this.countdownService.getDaysSince(countdown.dateTime);
+        countdown.daysRemaining = days;
+        countdown.past = past;
       });
     });
   }

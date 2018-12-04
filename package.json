@@ -27,6 +27,7 @@
     "@ionic/pro": "2.0.3",
     "@ionic/storage": "^2.2.0",
     "@types/shortid": "0.0.29",
+    "cordova-android": "7.1.4",
     "cordova-sqlite-storage": "2.5.0",
     "core-js": "^2.5.3",
     "rxjs": "6.2.2",
